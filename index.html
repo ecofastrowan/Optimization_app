@@ -45,11 +45,22 @@
     .hb-title { margin: 0; font-size: 25.3px; font-weight: 800; letter-spacing: -0.01em; color: #052E2C; }
     .hb-sub { margin: -2px 0 20px; font-size: 17.1px; color: #25585C; }
     .goal-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
-    .goal { position: relative; display: flex; flex-direction: column; align-items: flex-start; height: 242px; padding: 18px 10px 22px 22px;
+    .goal { position: relative; display: flex; flex-direction: column; align-items: flex-start; height: 300px; padding: 18px 10px 22px 22px;
       background: linear-gradient(160deg, #F8FBFA 0%, #EEF5F2 100%); border: 1px solid #DBEAE5; border-radius: 10px; }
     .goal:hover { border-color: #9FC3B7; box-shadow: 0 6px 18px rgba(14,74,66,.08); }
     .g-ico { width: 66px; height: 66px; border-radius: 50%; background: #0E4A42; display: grid; place-items: center; }
     .g-ico svg { width: 40px; height: 40px; }
+    .goal[data-goal="cost"] { --ac: #9A5B13; --tint: #FBF1E4; }
+    .goal[data-goal="env"] { --ac: #1F8A5B; --tint: #E9F6EF; }
+    .goal[data-goal="balance"] { --ac: #6A3D9A; --tint: #F2ECF9; }
+    .goal[data-goal] { background: #fff; border: 1px solid #E3EAE8; border-radius: 12px; overflow: hidden; transition: transform .18s, box-shadow .18s, border-color .18s; }
+    .goal[data-goal]:hover { transform: translateY(-3px); border-color: var(--ac); box-shadow: 0 10px 24px rgba(11,46,45,.10); }
+    .g-img { position: relative; display: block; width: calc(100% + 32px); height: 150px; margin: -18px -10px 0 -22px; background: var(--tint); border-bottom: 3px solid var(--ac); }
+    .g-img img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .35s; }
+    .goal[data-goal]:hover .g-img img { transform: scale(1.04); }
+    .g-chip { position: absolute; left: 14px; bottom: 10px; padding: 3px 10px; border-radius: 999px; background: var(--ac); color: #fff; font-size: 12px; font-weight: 600; letter-spacing: .03em; }
+    .goal[data-goal] .g-title { margin-top: 16px; }
+    .goal[data-goal] .arr { display: none; }
     .g-title { margin-top: 12px; font-size: 18.5px; font-weight: 700; line-height: 1.3; color: #0B2E2D; }
     .g-desc { margin-top: 7px; font-size: 14.6px; line-height: 20.5px; color: #375652; white-space: nowrap; }
     .goal .arr { position: absolute; left: 24px; bottom: 18px; width: 22px; height: 22px; color: #003333; }
@@ -646,9 +657,9 @@
           <h2 class="hb-title">Start a New Analysis</h2>
           <p class="hb-sub">Provide details about your food waste stream and choose your optimization goal.</p>
           <div class="goal-cards">
-              <a href="#new" class="goal" data-page="new" data-goal="cost"><span class="g-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round"><ellipse cx="12" cy="6.5" rx="6.5" ry="2.6"/><path d="M5.5 6.5v4c0 1.4 2.9 2.6 6.5 2.6s6.5-1.2 6.5-2.6v-4"/><path d="M5.5 10.5v4c0 1.4 2.9 2.6 6.5 2.6s6.5-1.2 6.5-2.6v-4"/><path d="M5.5 14.5v3c0 1.4 2.9 2.6 6.5 2.6s6.5-1.2 6.5-2.6v-3"/></g></svg></span><span class="g-title">Lowest Cost</span><span class="g-desc">Find the treatment pathway<br>with the lowest net annualized<br>cost.</span><svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13.5 6.5 19 12l-5.5 5.5"/></g></svg></a>
-              <a href="#new" class="goal" data-page="new" data-goal="env"><span class="g-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M19.5 4.5C10 4.5 5 9 5 15.5c0 1.4.3 2.6.8 3.6 1 .3 2 .4 3 .4 6.5 0 10.7-5 10.7-15z"/><path d="M5.6 19.4 14 11"/></g></svg></span><span class="g-title">Lowest Environmental Impact</span><span class="g-desc">Find the pathway with the lowest<br>overall environmental impact.</span><svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13.5 6.5 19 12l-5.5 5.5"/></g></svg></a>
-              <a href="#new" class="goal" data-page="new" data-goal="balance"><span class="g-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5v16M7.5 20.5h9M4.5 7h15"/><circle cx="12" cy="4" r=".6"/><path d="M6.5 7 3.5 13.5h6z"/><path d="M17.5 7l-3 6.5h6z"/><path d="M3.5 13.5a3 2 0 0 0 6 0M14.5 13.5a3 2 0 0 0 6 0"/></g></svg></span><span class="g-title">Best Balance</span><span class="g-desc">Find the pathway that balances<br>cost and environmental impact.</span><svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13.5 6.5 19 12l-5.5 5.5"/></g></svg></a>
+              <a href="#new" class="goal" data-page="new" data-goal="cost"><span class="g-img"><img src="img/goal-cost.jpg" alt="Lowest cost" style="object-position: center 65%"><span class="g-chip">Cost</span></span><span class="g-title">Lowest Cost</span><span class="g-desc">Find the treatment pathway<br>with the lowest net annualized<br>cost.</span><svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13.5 6.5 19 12l-5.5 5.5"/></g></svg></a>
+              <a href="#new" class="goal" data-page="new" data-goal="env"><span class="g-img"><img src="img/goal-env.jpg" alt="Lowest environmental impact" style="object-position: center 40%"><span class="g-chip">Environment</span></span><span class="g-title">Lowest Environmental Impact</span><span class="g-desc">Find the pathway with the lowest<br>overall environmental impact.</span><svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13.5 6.5 19 12l-5.5 5.5"/></g></svg></a>
+              <a href="#new" class="goal" data-page="new" data-goal="balance"><span class="g-img"><img src="img/goal-balance.jpg" alt="Best balance" style="object-fit: contain; padding: 6px 0; background: #fff"><span class="g-chip">Balance</span></span><span class="g-title">Best Balance</span><span class="g-desc">Find the pathway that balances<br>cost and environmental impact.</span><svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13.5 6.5 19 12l-5.5 5.5"/></g></svg></a>
             </div>
         </div>
 
