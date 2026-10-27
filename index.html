@@ -827,7 +827,7 @@
         <div class="page-wrap">
           <div class="pg-eyebrow">MY PROJECTS</div>
           <h1 class="pg-title">My Projects</h1>
-          <p class="pg-sub">Your saved analyses, kept in this browser.</p>
+          <p class="pg-sub"></p>
           <div class="pj-bar">
             <label class="pj-search"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></g></svg><input id="pj-search" type="search" placeholder="Search projects" aria-label="Search projects"></label>
             <div class="pj-seg" id="pj-count"></div>
@@ -843,7 +843,7 @@
         <div class="page-wrap">
           <div class="pg-eyebrow">ENVIRONMENTAL JUSTICE</div>
           <h1 class="pg-title">Environmental Justice</h1>
-          <p class="pg-sub">Does New Jersey's Environmental Justice Law apply to your design?</p>
+          <p class="pg-sub"></p>
           <div class="ej-ctx" id="ej-ctx"></div>
           <div class="ej-eq" id="ej-eq"></div>
           <div class="ej-mean" id="ej-mean"></div>
@@ -872,7 +872,7 @@
         <div class="page-wrap">
           <div class="pg-eyebrow">RESULTS</div>
           <h1 class="pg-title">Results</h1>
-          <p class="pg-sub">See the best treatment pathway for your analysis.</p>
+          <p class="pg-sub"></p>
           <div class="soon"><span class="g-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path d="M4.5 20h15"/><path d="M7 19v-5M11 19V9M15 19v-7M19 19V5"/></g></svg></span><div><div class="soon-t">Coming soon</div><div class="soon-d">The recommended pathway, cost, and environmental impact will be shown here.</div></div></div>
           <a href="#home" class="back" data-page="home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H5M10.5 6.5 5 12l5.5 5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Back to Home</a>
         </div>
@@ -882,7 +882,7 @@
         <div class="page-wrap">
           <div class="pg-eyebrow">RESOURCES</div>
           <h1 class="pg-title">Glossary</h1>
-          <p class="pg-sub">Terms used in ECO-FAST and what they mean.</p>
+          <p class="pg-sub"></p>
           <div id="rs-body"></div>
           <a href="#home" class="back" data-page="home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H5M10.5 6.5 5 12l5.5 5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Back to Home</a>
         </div>
@@ -916,7 +916,7 @@
       document.querySelectorAll("#page-new [data-go]").forEach(function (b) { b.addEventListener("click", function () { goStep(Number(b.dataset.go)); }); });
 
       // Subtitle for each step
-      var SUBS = ["", "See the treatment pathways ECO-FAST will evaluate.", "Review or change the cost values used by the model.", "Review or change the environmental factors used by the model.", "Check your setup and run the optimization."];
+      var SUBS = ["", "", "", "", ""];
       var _goStep = goStep;
       goStep = function (n) { _goStep(n); document.getElementById("na-sub").textContent = SUBS[n]; };
       document.querySelectorAll("#page-new .step").forEach(function (b) { b.addEventListener("click", function () { document.getElementById("na-sub").textContent = SUBS[Number(b.dataset.step)]; }); });
