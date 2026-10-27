@@ -254,6 +254,7 @@
     #page-new, #page-new button, #page-new input, #page-new select, #page-new textarea { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif; }
     #page-new .na-wrap { max-width: none; padding: 20px 22px 0 22px; }
     #page-new .na-h1 { font-size: 25px; font-weight: 700; letter-spacing: -0.015em; color: var(--ink); }
+    #page-new .na-sub:empty { height: 0; margin: 0 0 16px; }
     #page-new .na-sub { margin: 2px 0 16px; font-size: 14px; color: var(--muted); letter-spacing: .005em; }
 
     /* chevron step bar: only the active step is filled, the rest are split by thin chevron lines */
@@ -686,7 +687,7 @@
       <div id="page-new" class="page hidden">
         <div class="na-wrap">
           <h1 class="na-h1">New Analysis</h1>
-          <p class="na-sub" id="na-sub">Define the feedstock that will be evaluated by ECO-FAST.</p>
+          <p class="na-sub" id="na-sub"></p>
           <div class="steps">
             <button type="button" class="step active" data-step="0"><span class="num">1</span><span class="lbl">Feedstock</span></button>
             <span class="step-line"></span>
@@ -915,7 +916,7 @@
       document.querySelectorAll("#page-new [data-go]").forEach(function (b) { b.addEventListener("click", function () { goStep(Number(b.dataset.go)); }); });
 
       // Subtitle for each step
-      var SUBS = ["Define the feedstock that will be evaluated by ECO-FAST.", "See the treatment pathways ECO-FAST will evaluate.", "Review or change the cost values used by the model.", "Review or change the environmental factors used by the model.", "Check your setup and run the optimization."];
+      var SUBS = ["", "See the treatment pathways ECO-FAST will evaluate.", "Review or change the cost values used by the model.", "Review or change the environmental factors used by the model.", "Check your setup and run the optimization."];
       var _goStep = goStep;
       goStep = function (n) { _goStep(n); document.getElementById("na-sub").textContent = SUBS[n]; };
       document.querySelectorAll("#page-new .step").forEach(function (b) { b.addEventListener("click", function () { document.getElementById("na-sub").textContent = SUBS[Number(b.dataset.step)]; }); });
